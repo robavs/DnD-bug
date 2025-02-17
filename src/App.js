@@ -1,25 +1,46 @@
-import logo from './logo.svg';
+import {useEffect, useState, useRef} from 'react';
+import {
+	draggable,
+} from '@atlaskit/pragmatic-drag-and-drop/element/adapter';
 import './App.css';
 
-function App() {
+function Item() {
+  const [tooltip1, setTooltip1] = useState(false);
+  const itemRef = useRef();
+
+  function showTooltip1(){
+    console.log('showed');
+    setTooltip1(true);
+  }
+
+  function hideTooltip1(){
+    console.log('hide');
+    setTooltip1(false);
+  }
+
+  useEffect(() => {
+    draggable({ element: itemRef.current })
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div ref={itemRef} className="item">
+      {tooltip1 && <div className="firstTooltip">First tooltip is displayed</div>}
+      <div
+        onMouseEnter={showTooltip1}
+        onMouseLeave={hideTooltip1}
+        className="icon1"
+      >
+        Icon1
+      </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default function App() {
+  return (
+    <div className="list">
+      <Item />
+    </div>
+  )
+}
+
