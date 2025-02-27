@@ -1,0 +1,71 @@
+.container {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border: 2px solid black;
+    height: 300px;
+    width: 500px;
+    overflow-y: scroll;
+  }
+   
+  .component-one {
+    height: 50px;
+    width: 150px;
+    cursor: pointer;
+    border: 1px dashed black;
+    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+  
+  .component-two {
+    height: 35px;
+    width: 150px;
+    cursor: pointer;
+    border: 1px dashed black;
+    background-color: blue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+  
+  .component-three {
+    height: 45px;
+    width: 150px;
+    cursor: pointer;
+    border: 1px dashed black;
+    background-color: green;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+  
+  .component-four {
+    height: 25px;
+    width: 150px;
+    cursor: pointer;
+    border: 1px dashed black;
+    background-color: yellow;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+  }
+  
+  .component-five {
+    height: 40px;
+    width: 150px;
+    cursor: pointer;
+    border: 1px dashed black;
+    background-color: purple;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+  

@@ -1,46 +1,70 @@
-import {useEffect, useState, useRef} from 'react';
-import {
-	draggable,
-} from '@atlaskit/pragmatic-drag-and-drop/element/adapter';
-import './App.css';
+import { useEffect, useRef } from 'react';
+import { draggable } from '@atlaskit/pragmatic-drag-and-drop/element/adapter';
+import './styles.css';
 
-function Item() {
-  const [tooltip1, setTooltip1] = useState(false);
-  const itemRef = useRef();
+const ComponentOne = () => (
+  <div className="component-one">
+    First cmp
+    <span>New Cmp</span>
 
-  function showTooltip1(){
-    console.log('showed');
-    setTooltip1(true);
-  }
+  </div>
+);
 
-  function hideTooltip1(){
-    console.log('hide');
-    setTooltip1(false);
-  }
+const ComponentTwo = () => (
+  <div className="component-two">
+    Component Two
+  </div>
+);
+
+const ComponentThree = () => (
+  <div className="component-three">
+    Component Three
+  </div>
+);
+
+const ComponentFour = () => (
+  <div className="component-four">
+    Component Four
+  </div>
+);
+
+const ComponentFive = () => (
+  <div className="component-five">
+    Component Five
+  </div>
+);
+
+const Wrapper = ({ Comp }) => {
+  const ref = useRef();
 
   useEffect(() => {
-    draggable({ element: itemRef.current })
+    return draggable({
+      element: ref.current
+    })
   }, []);
 
   return (
-    <div ref={itemRef} className="item">
-      {tooltip1 && <div className="firstTooltip">First tooltip is displayed</div>}
-      <div
-        onMouseEnter={showTooltip1}
-        onMouseLeave={hideTooltip1}
-        className="icon1"
-      >
-        Icon1
-      </div>
+    <div ref={ref}>
+      <Comp/>
     </div>
-  )
+  );
 }
 
-export default function App() {
+const App = () => {
+
   return (
-    <div className="list">
-      <Item />
+    <div className="container">
+      <Wrapper Comp={ComponentOne} />
+      <Wrapper Comp={ComponentTwo} />
+      <Wrapper Comp={ComponentThree} />
+      <Wrapper Comp={ComponentFour} />
+      <Wrapper Comp={ComponentFive} />
+      <Wrapper Comp={ComponentOne} />
+      <Wrapper Comp={ComponentThree} />
+      <Wrapper Comp={ComponentThree} />
+      <Wrapper Comp={ComponentOne} />
     </div>
-  )
-}
+  );
+};
 
+export default App;
